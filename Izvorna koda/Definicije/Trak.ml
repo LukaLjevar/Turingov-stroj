@@ -14,4 +14,6 @@ let premik_na_levo trak' = { trak' with indeks_trenutnega_znaka = succ trak'.ind
 
 let premik_na_desno trak' = { trak' with indeks_trenutnega_znaka = trak'.indeks_trenutnega_znaka  - 1}
 
-let zapisi_na_trak x i trak' (*Zapiše x na i-to mesto traku*) = {trak' with trak  = (trak'.trak).(i) <- x}
+let aux_zapisi x i a = a.(i) <- x; a
+
+let zapisi_na_trak x i trak' (*Zapiše x na i-to mesto traku*) = {trak' with trak  = aux_zapisi x i (trak'.trak)}
