@@ -2,10 +2,16 @@
 katerega dolžina je >= 9 -uporabnik poljubno definira dolžino traku, ki jo želi uporabljati. 
 Nato za sredinskih devet mest izbere vrednosti 0 ali 1.
 Ostala mesta na traku so nepopisana. Zato za predstavitev traku uporabimo int option array. Če je mesto nepopisano, ga označimo z None.
-Sicer *)
+Sicer z Some 0 oziroma Some 1.*)
 
 type t = {trak : int option array; indeks_trenutnega_znaka : int}
 
 let trenutni_znak trak' = (trak'.trak).(trak'.indeks_trenutnega_znaka)
 
 let je_na_robu_traku trak' = (trak'.indeks_trenutnega_znaka = 0) || (trak'.indeks_trenutnega_znaka = Array.length (trak'.trak) - 1)
+
+let premik_na_levo trak' = { trak' with indeks_trenutnega_znaka = succ trak'.indeks_trenutnega_znaka }
+
+let premik_na_desno trak' = { trak' with indeks_trenutnega_znaka = trak'.indeks_trenutnega_znaka  - 1}
+
+let zapisi_na_trak x i trak' (*Zapiše x na i-to mesto traku*) = {trak' with trak  = (trak'.trak).(i) <- x}
