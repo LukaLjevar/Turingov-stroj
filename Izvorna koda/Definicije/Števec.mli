@@ -1,3 +1,3 @@
 type stevec
 
-val update stevec -> stevec
+val update : stevec -> stevec
